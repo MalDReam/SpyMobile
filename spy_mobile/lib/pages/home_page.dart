@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ElevatedButton(
-              onPressed: (){}, 
+              onPressed: (){Navigator.pushNamed(context, '/settings_page');}, 
               child: const Text("Начать"),
             ),   
             Row(

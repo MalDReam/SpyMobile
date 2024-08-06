@@ -45,7 +45,7 @@ class RulesPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final List<Widget> data = ruleCardData
-        .map((ruleCardData) => RuleCard(data: ruleCardData,)).toList();
+        .map((ruleCardData) => RuleCard(data: ruleCardData)).toList();
 
     return Scaffold(
       appBar: AppBar(
