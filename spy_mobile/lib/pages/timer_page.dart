@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 
 class TimerPage extends StatefulWidget {
@@ -58,30 +59,70 @@ class _TimerPageState extends State<TimerPage> {
           actions: [
             IconButton(
                 onPressed: isComleted ? endGame : null,
-                icon: const Icon(Icons.check))
+                icon: const Icon(Icons.exit_to_app))
           ],
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               buildTimer(),
               buildActionsTimer(),
+              buildActions()
             ],
           ),
         ));
   }
 
   Widget buildTimer() {
-    return Text("$timeInTimer");
+    return SizedBox(
+      height: 200,
+      width: 200,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          CircularProgressIndicator(
+            value: (timeInTimer / (widget.time * 60)),
+            strokeWidth: 12,
+            
+          ),
+          Center(child: Text(
+            "$timeInTimer",
+            style: TextStyle(
+              fontSize: 24
+            ),
+            ))
+          ]
+      ),
+    );
   }
 
   Widget buildActionsTimer() {
     return isRunning
-        ? ElevatedButton(
+        ? FilledButton(
             onPressed: stopTimer,
-            child: const Text("pause"),
+            child: const Text("Пауза"),
           )
-        : ElevatedButton(onPressed: startTimer, child: const Text("Start"));
+        : FilledButton(onPressed: startTimer, child: const Text("Старт"));
+  }
+
+  Row buildActions() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        FilledButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/hints_page');
+          },
+          child: const Text("Подсказки"),
+        ),
+        FilledButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/rules_page');
+          },
+          child: const Text("Правила"),
+        ),
+      ],
+    );
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class HintsPage extends StatelessWidget {
   final List<String> _textOfData = const [
-    "Живут ли там пингвины?", 
-    "Там сыро?", 
+    "Живут ли там пингвины?",
+    "Там сыро?",
     "Чем славится это место?",
     "Можно ли туда пригласить на первое свидание?",
     "Это место находится высоко?",
@@ -25,7 +25,13 @@ class HintsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Подсказки"),
+        title: const Text(
+          "Подсказки",
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        surfaceTintColor: Colors.blueGrey[50],
         centerTitle: true,
       ),
       body: ListView.separated(
@@ -44,8 +50,14 @@ class HintsRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-      child: Text(data),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 3),
+      child: Text(
+        data,
+        textAlign: TextAlign.justify,
+        style: TextStyle(
+          fontWeight: FontWeight.w500
+        ),
+      ),
     );
   }
 }

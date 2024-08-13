@@ -15,35 +15,51 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container( // Logo and name
-              child: const Column(
+            Container(
+              // Logo and name
+              child: Column(
                 children: [
                   SizedBox(
-                    child: Placeholder(), 
-                    width: 200, 
-                    height: 200
+                    width: 256,
+                    height: 256,
+                    child: Image.asset("assets/images/spy-256.png",
+                        color: Colors.black54),
                   ),
-                  Text("SPY MOBILE")
+                  const Text(
+                    "SPY MOBILE",
+                    style: TextStyle(fontSize: 22),
+                  )
                 ],
               ),
             ),
-            ElevatedButton(
-              onPressed: (){Navigator.pushNamed(context, '/settings_page');}, 
-              child: const Text("Начать"),
-            ),   
+            FilledButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings_page');
+              },
+              child: const Text(
+                "Начать",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: (){Navigator.pushNamed(context, '/hints_page');}, 
-                  child: const Text("Подсказки"),
+                FilledButton.icon(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/hints_page');
+                  },
+                  label: const Text("Подсказки"),
+                  icon: const Icon(Icons.announcement_outlined),
                 ),
-                ElevatedButton(
-                  onPressed: (){Navigator.pushNamed(context, '/rules_page');}, 
-                  child: const Text("Правила"),
+                FilledButton.icon(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/rules_page');
+                  },
+                  label: const Text("Правила"),
+                  icon: const Icon(Icons.help_outline),
                 )
               ],
-            )        
+            )
           ],
         ),
       ),

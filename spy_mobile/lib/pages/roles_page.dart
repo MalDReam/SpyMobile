@@ -105,7 +105,11 @@ class _RolesPageState extends State<RolesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Роли"),
+        title: const Text(
+          "Роли",
+          style: TextStyle(fontSize: 24),
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.check),
@@ -123,16 +127,27 @@ class _RolesPageState extends State<RolesPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Column(
-            children: [Text(role), Text(textLocation)],
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  role,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 30),
+                ),
+              ),
+              Text(textLocation)
+            ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
+              FilledButton(
                   onPressed: rolesIndex < listOfPlayers.length && !showRole
                       ? giveRole
                       : null,
                   child: const Text("Получить роль")),
-              ElevatedButton(
+              FilledButton(
                   onPressed: showRole ? disableRole : null,
                   child: const Text("Скрыть")),
             ],
@@ -154,7 +169,7 @@ class _RolesPageState extends State<RolesPage> {
   //Функция, ответственная за работу кнопки "Получить роль"
   void giveRole() {
     setState(() {
-      role = listOfPlayers[rolesIndex].name;
+      role = viewRole(listOfPlayers[rolesIndex]);
       if (listOfPlayers[rolesIndex] == Roles.player) {
         textLocation = location;
       } else {
@@ -174,5 +189,18 @@ class _RolesPageState extends State<RolesPage> {
   void toTimerPage() {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => TimerPage(time: widget.time)));
+  }
+
+  //Функция для "красивого" отображения роли на экране
+  String viewRole(Roles thisRole) {
+    String result;
+    switch (thisRole) {
+      case Roles.player:
+        result = "Вы игрок";
+        break;
+      case Roles.spy:
+        result = "Вы шпион";
+    }
+    return result;
   }
 }

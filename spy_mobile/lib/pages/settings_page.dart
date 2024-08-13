@@ -18,116 +18,164 @@ class _SettingsPageState extends State<SettingsPage> {
 
   List<Widget> data() {
     List<Widget> dataBody = [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              if (countPlayers > 3 && countPlayers > countSpies+2) {
+      Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                if (countPlayers > 3 && countPlayers > countSpies + 2) {
+                  setState(() {
+                    countPlayers--;
+                  });
+                }
+              },
+              icon: const Icon(Icons.remove),
+            ),
+            Column(
+              children: [
+                Text(
+                  "$countPlayers",
+                  style: TextStyle(fontSize: 20),
+                ),
+                const Text("Количество участников")
+              ],
+            ),
+            IconButton(
+              onPressed: () {
                 setState(() {
-                  countPlayers--;
+                  countPlayers++;
                 });
-              }
-            },
-            icon: const Icon(Icons.remove),
-          ),
-          Column(
-            children: [
-              Text("$countPlayers"),
-              const Text("Количество участников")
-            ],
-          ),
-          IconButton(
-            onPressed: () {
-              setState(() {
-                countPlayers++;
-              });
-            },
-            icon: const Icon(Icons.add),
-          ),
-        ],
+              },
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              if (countSpies > 1) {
-                setState(() {
-                  countSpies--;
-                });
-              }
-            },
-            icon: const Icon(Icons.remove),
-          ),
-          Column(
-            children: [Text("$countSpies"), const Text("Количество шпионов")],
-          ),
-          IconButton(
-            onPressed: () {
-              if (countSpies < countPlayers - 2) {
-                setState(() {
-                  countSpies++;
-                });
-              }
-            },
-            icon: const Icon(Icons.add),
-          ),
-        ],
+      Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                if (countSpies > 1) {
+                  setState(() {
+                    countSpies--;
+                  });
+                }
+              },
+              icon: const Icon(Icons.remove),
+            ),
+            Column(
+              children: [
+                Text(
+                  "$countSpies",
+                  style: TextStyle(fontSize: 20),
+                ),
+                const Text("Количество шпионов")
+              ],
+            ),
+            IconButton(
+              onPressed: () {
+                if (countSpies < countPlayers - 2) {
+                  setState(() {
+                    countSpies++;
+                  });
+                }
+              },
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              if (time > 1) {
-                setState(() {
-                  time--;
-                });
-              }
-            },
-            icon: const Icon(Icons.remove),
-          ),
-          Column(
-            children: [Text("$time"), const Text("Количество времени")],
-          ),
-          IconButton(
-            onPressed: () {
-              if (time < 30) {
-                setState(() {
-                  time++;
-                });
-              }
-            },
-            icon: const Icon(Icons.add),
-          ),
-        ],
+      Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                if (time > 1) {
+                  setState(() {
+                    time--;
+                  });
+                }
+              },
+              icon: const Icon(Icons.remove),
+            ),
+            Column(
+              children: [
+                Text(
+                  "$time",
+                  style: TextStyle(fontSize: 20),
+                ),
+                const Text("Количество времени")
+              ],
+            ),
+            IconButton(
+              onPressed: () {
+                if (time < 30) {
+                  setState(() {
+                    time++;
+                  });
+                }
+              },
+              icon: const Icon(Icons.add),
+            ),
+          ],
+        ),
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {
-              if (themeIndex > 0) {
-                setState(() {
-                  themeIndex--;
-                });
-              }
-            },
-            icon: const Icon(Icons.arrow_back),
-          ),
-          Column(children: [Text(themes[themeIndex]), const Text("Тема")]),
-          IconButton(
-            onPressed: () {
-              if (themeIndex < themes.length - 1) {
-                setState(() {
-                  themeIndex++;
-                });
-              }
-            },
-            icon: const Icon(Icons.arrow_forward),
-          ),
-        ],
+      Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                if (themeIndex > 0) {
+                  setState(() {
+                    themeIndex--;
+                  });
+                }
+              },
+              icon: const Icon(Icons.arrow_back),
+            ),
+            Column(children: [
+              Text(
+                themes[themeIndex],
+              ),
+              const Text("Тема")
+            ]),
+            IconButton(
+              onPressed: () {
+                if (themeIndex < themes.length - 1) {
+                  setState(() {
+                    themeIndex++;
+                  });
+                }
+              },
+              icon: const Icon(Icons.arrow_forward),
+            ),
+          ],
+        ),
       )
     ];
     return dataBody;
@@ -137,7 +185,10 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Настройки"),
+        title: const Text(
+          "Настройки",
+          style: TextStyle(fontSize: 24),
+        ),
         centerTitle: true,
         actions: [
           IconButton(

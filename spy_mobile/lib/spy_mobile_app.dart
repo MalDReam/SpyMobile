@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spy_mobile/theme/light_theme.dart';
+import 'package:spy_mobile/theme/theme.dart';
 import 'package:spy_mobile/pages/hints_page.dart';
 import 'package:spy_mobile/pages/home_page.dart';
 import 'package:spy_mobile/pages/roles_page.dart';
@@ -13,9 +15,7 @@ class SpyMobileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: createLightTheme(),
       routes: {
         '/': (context) => const HomePage(),
         '/hints_page': (context) => const HintsPage(),
