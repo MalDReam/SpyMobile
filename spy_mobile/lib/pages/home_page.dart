@@ -44,19 +44,17 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                FilledButton.icon(
+                FilledButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/hints_page');
                   },
-                  label: const Text("Подсказки"),
-                  icon: const Icon(Icons.announcement_outlined),
+                  child: const Text("Подсказки"),
                 ),
-                FilledButton.icon(
+                FilledButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/rules_page');
                   },
-                  label: const Text("Правила"),
-                  icon: const Icon(Icons.help_outline),
+                  child: const Text("Правила"),
                 )
               ],
             )

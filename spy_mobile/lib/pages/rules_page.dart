@@ -48,9 +48,7 @@ class RulesPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Правила",
-          style: TextStyle(
-            fontSize: 24
-          ),
+          style: TextStyle(fontSize: 24),
         ),
         centerTitle: true,
       ),
@@ -105,10 +103,9 @@ class _FrontSideCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(
-          vertical: 40), //Для "необрезанной" анимации переварачивания
+          vertical: 40), // Для "необрезанной" анимации переварачивания
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 5),
-        color: Colors.blueGrey[50],
+        color: Colors.indigo[400],
         borderRadius: BorderRadius.circular(25),
       ),
       child: Center(
@@ -117,13 +114,17 @@ class _FrontSideCard extends StatelessWidget {
           children: [
             Icon(
               data.icon,
-              size: 128,
+              size: 200,
+              color: Colors.white,
             ),
             Text(
               data.textHeader,
-              style: const TextStyle(fontSize: 28),
+              style: const TextStyle(fontSize: 28, color: Colors.white),
             ),
-            const Text("(Нажмите на карточку)")
+            const Text(
+              "(Нажмите на карточку)",
+              style: TextStyle(color: Colors.white),
+            )
           ],
         ),
       ),
@@ -143,8 +144,7 @@ class _BackSideCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(
             vertical: 40), //Для "необрезанной" анимации переварачивания
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 5),
-          color: Colors.blueGrey[100],
+          color: Colors.indigo[400],
           borderRadius: BorderRadius.circular(25),
         ),
         child: Center(
@@ -153,7 +153,7 @@ class _BackSideCard extends StatelessWidget {
           child: Text(
             data.textDesc,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18, color: Colors.white),
           ),
         )));
   }

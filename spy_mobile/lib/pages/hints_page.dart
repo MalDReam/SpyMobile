@@ -25,12 +25,7 @@ class HintsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Подсказки",
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
+        title: const Text("Подсказки"),
         surfaceTintColor: Colors.blueGrey[50],
         centerTitle: true,
       ),

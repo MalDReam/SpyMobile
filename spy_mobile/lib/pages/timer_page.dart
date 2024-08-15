@@ -18,7 +18,7 @@ class _TimerPageState extends State<TimerPage> {
 
   void startTimer() {
     isRunning = true;
-    timer = Timer.periodic(const Duration(milliseconds: 100), (_) {
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (timeInTimer > 0) {
         setState(() {
           timeInTimer--;
@@ -65,11 +65,7 @@ class _TimerPageState extends State<TimerPage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              buildTimer(),
-              buildActionsTimer(),
-              buildActions()
-            ],
+            children: [buildTimer(), buildActionsTimer(), buildActions()],
           ),
         ));
   }
@@ -78,22 +74,17 @@ class _TimerPageState extends State<TimerPage> {
     return SizedBox(
       height: 200,
       width: 200,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          CircularProgressIndicator(
+      child: Stack(fit: StackFit.expand, children: [
+        CircularProgressIndicator(
             value: (timeInTimer / (widget.time * 60)),
             strokeWidth: 12,
-            
-          ),
-          Center(child: Text(
-            "$timeInTimer",
-            style: TextStyle(
-              fontSize: 24
-            ),
-            ))
-          ]
-      ),
+            color: _selectColor()),
+        Center(
+            child: Text(
+          "$timeInTimer",
+          style: const TextStyle(fontSize: 24),
+        ))
+      ]),
     );
   }
 
@@ -124,5 +115,15 @@ class _TimerPageState extends State<TimerPage> {
         ),
       ],
     );
+  }
+
+  Color _selectColor() {
+    if (!isRunning) {
+      return Colors.black26;
+    }
+    if (timeInTimer < 30) {
+      return Colors.red;
+    }
+    return Colors.indigo;
   }
 }

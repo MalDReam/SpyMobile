@@ -185,11 +185,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Настройки",
-          style: TextStyle(fontSize: 24),
-        ),
-        centerTitle: true,
+        title: const Text("Настройки"),
         actions: [
           IconButton(
               onPressed: () {
